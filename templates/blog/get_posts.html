@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}   
+{% block body %}
+<div class="container">
+
+<h2>Список постів:</h2>
+<ul>
+	{% for post in posts %}
+		<li>
+		<h3>post</h3>
+		</li>
+	{% endfor %}
+</ul>
+
+</div>
+{% endblock %}
