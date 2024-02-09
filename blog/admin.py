@@ -6,6 +6,8 @@ from .models import *
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'content', 'published_date')
+    list_display_links = ("id", "title")
+
     search_fields = ('id', 'title')
 
 

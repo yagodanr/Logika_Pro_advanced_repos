@@ -6,7 +6,7 @@ from django.utils import timezone
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     content = models.TextField(verbose_name="Зміст")
-    published_date =models.DateTimeField(default=timezone.now, editable=False, verbose_name="Дата створення")
+    published_date = models.DateTimeField(default=timezone.now, editable=False, verbose_name="Дата створення")
 
     def __str__(self) -> str:
         return self.title
