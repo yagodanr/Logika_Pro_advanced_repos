@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}   
+{% block body %}
+<div class="container">
+
+<h2>Список постів:</h2>
+<ul>
+	{% for post in posts %}
+		<li>
+			<h3>{{post.title}} {{post.published_date}}</h3>
+			<a href="post/{{post.id}}" class="">Детальніше</a>
+		</li>
+	{% endfor %}
+</ul>
+
+</div>
+{% endblock %}
