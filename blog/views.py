@@ -5,6 +5,8 @@ from .models import *
 
 def get_all_posts(request):
     posts = Post.objects.all()
+    for post in posts:
+        post.time_dif = post.published_recently()
     
     
     context = {
@@ -26,6 +28,19 @@ def get_post_by_id(request, post_id: int):
     return render(
         request,
         "blog/get_post_by_id.html",
+        context,
+    )
+    
+def get_author_by_id(request, author_id: int):
+    author = Author.objects.get(id=author_id)
+    context = {
+        "author": author,
+        "posts": author.posts.all()
+    }
+    
+    return render(
+        request,
+        "blog/get_author_by_id.html",
         context,
     )
 

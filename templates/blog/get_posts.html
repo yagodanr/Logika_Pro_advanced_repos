@@ -6,8 +6,9 @@
 <ul>
 	{% for post in posts %}
 		<li>
-			<h3>{{post.title}} {{post.published_date}}</h3>
-			<a href="post/{{post.id}}" class="">Детальніше</a>
+			<h3>{{ post.title }} {{ post.published_date }} <a href="author/{{ post.author.id }}" class="link">{{ post.author }}</a></h3>
+			<a href="post/{{ post.id }}" class="">Детальніше</a>
+			<h3>{{ post.time_dif }}</h3>
 		</li>
 	{% endfor %}
 </ul>
