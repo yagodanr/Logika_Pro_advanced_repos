@@ -8,7 +8,7 @@ class Room(models.Model):
     number = models.CharField(max_length=255)
     capacity = models.IntegerField()
     location = models.TextField()
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     
     def __str__(self) -> str:
         return f"{self.id}, {self.number}"
