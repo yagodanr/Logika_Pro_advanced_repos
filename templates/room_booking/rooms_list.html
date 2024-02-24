@@ -1,13 +1,14 @@
-{% extends 'room_booking/index.html' %}
+{% extends 'index.html' %}
 
 {% block body %}
     
-<div class="conrainer">
+<div class="container">
     
     <h1>Rooms:</h1>
     <ul>
         {% for room in rooms %}
             <li>{{ room.number }}</li>
+            <br>
         {% endfor %}
     </ul>
     

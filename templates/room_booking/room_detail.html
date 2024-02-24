@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    
+<div class="container">
+    
+    <h1 class="fs-2">Number : {{ room.number }}</h1>
+
+
+    <h2 class="fs-3">Location: </h2>
+    <h3 class="fs-4">{{ room.location }}</h3>
+    <h2 class="fs-3">Description: </h2>
+    <h3 class="fs-4">{{ room.description }}</h3>
+
+    <h2 class="fs-3">Room capacity: </h2>
+    <h5 class="fs-5">{{ room.capacity }}</h5>
+
+
+
+    
+        
+</div>
+
+
+{% endblock body %}
+    
+
