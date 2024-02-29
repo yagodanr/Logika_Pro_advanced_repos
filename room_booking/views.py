@@ -37,8 +37,6 @@ def get_room_detail(request, pk: int):
 def booking_form(request):
     
     if request.method == "GET": 
-        
-        
         return render(
             request,
             "room_booking/booking_form.html"

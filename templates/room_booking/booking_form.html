@@ -7,17 +7,17 @@
     <form method="POST" action="{% url 'booking_form' %}">
     {% csrf_token %}
         
-      <h3 class="fs-4">Room_number: </h3>
-      <input type="text" id="room_number" name="room_number"> 
+      <label class="form-label">Room_number: </label>
+      <input type="text" id="room_number" name="room_number" class="form-control"> 
       <br>
-      <h3 class="fs-4">From_time: </h3>
-      <input type="datetime-local" id="from_time" name="from_time"> 
+      <label class="form-label">From_time: </label>
+      <input type="datetime-local" id="from_time" name="from_time" class="form-control"> 
       <br>
-      <h3 class="fs-4">To_time: </h3>
-      <input type="datetime-local" id="to_time" name="to_time"> 
+      <label class="form-label">To_time: </label>
+      <input type="datetime-local" id="to_time" name="to_time" class="form-control"> 
       <br>
         
-      <button type="submit">Забронювати</button>
+      <button type="submit" class="btn btn-primary">Забронювати</button>
         
     </form>
 
