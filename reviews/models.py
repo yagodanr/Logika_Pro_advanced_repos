@@ -14,6 +14,6 @@ class Review(models.Model):
         verbose_name_plural = ("Reviews")
 
     def __str__(self):
-        return self.name
+        return self.username
 
 
