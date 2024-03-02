@@ -6,9 +6,8 @@ class Review(models.Model):
 
     username = models.CharField(max_length=255)
     text =  models.TextField()
-    date = models.DateField()
+    date = models.DateTimeField(auto_now_add=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = ("Review")
