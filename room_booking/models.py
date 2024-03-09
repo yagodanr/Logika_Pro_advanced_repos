@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 
 # Create your models here.
@@ -21,7 +21,7 @@ class Room(models.Model):
 
 class Booking(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="bookings")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="bookings")
 
     from_time = models.DateTimeField()
     to_time = models.DateTimeField()
