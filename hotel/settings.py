@@ -34,10 +34,11 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    "auth_system",
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "room_booking.apps.RoomBookingConfig"
+    "room_booking.apps.RoomBookingConfig",
 ]
 
 MIDDLEWARE = [
