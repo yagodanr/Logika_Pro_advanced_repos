@@ -43,16 +43,20 @@ def log(request):
             
             if user is not None:
                 login(request, user=user)
-                return redirect("rooms")
+                next_url = request.GET.get("next")
+                
+                return redirect(next_url)
             else:
                 messages.error(request, "Wrong login or password")
 
     else:
         form = AuthenticationForm()
         
+        next_url = request.GET.get("next")
+        
         return render(
             request,
             "auth_system/login.html",
-            context={"form": form}
+            context={"form": form, "next_url": next_url}
         )
         

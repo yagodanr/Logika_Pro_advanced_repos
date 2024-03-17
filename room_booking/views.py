@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 from .models import *
@@ -34,6 +35,7 @@ def get_room_detail(request, pk: int):
     )
     
 
+@login_required
 def booking_form(request):
     
     if request.method == "GET": 
@@ -66,18 +68,19 @@ def booking_form(request):
         
         
         
-
+@login_required
 def booking_detail(request, pk: int):
+    booking = Booking.objects.get(id=pk)
     
-    if request.method == "GET": 
-        booking = Booking.objects.get(id=pk)
-        
-        context = {
-            "booking": booking
-        }
-        
-        return render(
-            request,
-            "room_booking/booking_detail.html",
-            context
-        )
+    if(request.user != booking.user):
+        return redirect("rooms")
+    
+    context = {
+        "booking": booking
+    }
+    
+    return render(
+        request,
+        "room_booking/booking_detail.html",
+        context
+    )

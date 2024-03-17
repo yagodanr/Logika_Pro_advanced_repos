@@ -1,4 +1,7 @@
-{% extends 'index.html' %}
+{% extends 'room_booking/index.html' %}
+    
+
+
 
 {% block body %}
     
@@ -7,7 +10,7 @@
     <h1>Rooms:</h1>
     <ul>
         {% for room in rooms %}
-            <li>{{ room.number }}</li>
+            <li><a href="{% url 'room_detail' room.id %}" class="link-body-info link-offset-2 link-underline-opacity-10 link-underline-opacity-75-hover">{{ room.number }}</a></li>
             <br>
         {% endfor %}
     </ul>

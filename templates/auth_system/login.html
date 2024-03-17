@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <form method="POST" action="{% url 'login' %}">
+    <form method="POST" action="{% url 'login' %}?next={{next_url}}">
         {% csrf_token %}
 
         {{ form.as_p }}
