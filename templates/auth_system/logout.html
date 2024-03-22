@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<div class="container px-auto">
+    {% if form.errors %}
+    <ul>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ field }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="POST" action="{% url 'logout' %}?next={{next_url}}" class="position-absolute top-50 start-50 translate-middle card card-body w-50 rounded-5">
+        {% csrf_token %}
+
+        <h1 class="card-header display-4 mb-4 rounded-top-5">Logout</h1>
+        
+        <p class="card-text">Are you sure you want to logout?</p>
+
+        <div class="d-flex flex-row justify-content-between mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">Yes</button>
+            <a href="{{ next_url }}" class="btn btn-danger btn-lg">Go back</a>
+        </div>
+
+
+    </form>
+</div>
+{% endblock body %}
+    
+

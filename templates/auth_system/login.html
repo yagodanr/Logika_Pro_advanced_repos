@@ -2,13 +2,21 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container px-auto">
+    
 
-    <form method="POST" action="{% url 'login' %}?next={{next_url}}">
+    <form method="POST" action="{% url 'login' %}?next={{next_url}}" class="position-absolute top-50 start-50 translate-middle card card-body w-50 rounded-5">
         {% csrf_token %}
 
+        <h4 class="card-header display-4 mb-4 rounded-top-5">Login</h4>
+
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="d-flex flex-row justify-content-between mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+            <a href="{% url 'register' %}" class="btn btn-secondary btn-lg">Create account</a>
+            <a href="{{ next_url }}" class="btn btn-danger btn-lg">Go back</a>
+        </div>
+
 
     </form>
 </div>

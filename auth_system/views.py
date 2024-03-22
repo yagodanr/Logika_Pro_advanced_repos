@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from auth_system.forms import CustomUserCreationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 
 
@@ -31,32 +31,64 @@ def register(request):
         )
         
         
-def log(request):
+def log_in(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         
         if form.is_valid():
+            
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
             
             user = authenticate(request, username=username, password=password)
             
-            if user is not None:
-                login(request, user=user)
-                next_url = request.GET.get("next")
-                
-                return redirect(next_url)
-            else:
-                messages.error(request, "Wrong login or password")
+            login(request, user=user)
+            next_url = request.GET.get("next")
+            if next_url is None:
+                next_url = ""
+            
+            return redirect(next_url)
+        else:
+            next_url = request.GET.get("next")
+            if next_url is None:
+                next_url = "/"
+            
+            return render(
+                request,
+                "auth_system/login.html",
+                context={"form": form, "next_url": next_url}
+            )
 
     else:
         form = AuthenticationForm()
         
         next_url = request.GET.get("next")
+        if next_url is None:
+            next_url = "/"
         
         return render(
             request,
             "auth_system/login.html",
             context={"form": form, "next_url": next_url}
+        )
+        
+def log_out(request):
+    if request.method == "POST":
+        logout(request)
+
+        next_url = request.GET.get("next")
+        if next_url == "/":
+            next_url = "login"
+        return redirect(next_url)
+        
+    else:
+        next_url = request.GET.get("next")
+        if next_url is None:
+            next_url = "/"
+        
+        return render(
+            request,
+            "auth_system/logout.html",
+            context={"next_url": next_url}
         )
         

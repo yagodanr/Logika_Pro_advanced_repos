@@ -2,13 +2,19 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container px-auto">
 
-    <form method="POST" action="{% url 'register' %}">
+    <form method="POST" action="{% url 'register' %}?next={{next_url}}" class="position-absolute top-50 start-50 translate-middle card card-body w-50 rounded-5">
         {% csrf_token %}
 
+        <h4 class="card-header display-4 mb-4 rounded-top-5">Create an account</h4>
+
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="d-flex flex-row justify-content-between mt-3">
+            <button type="submit" class="btn btn-primary btn-lg">Create</button>
+            <a href="{{ next_url }}" class="btn btn-danger btn-lg">Go back</a>
+        </div>
+
 
     </form>
 </div>
